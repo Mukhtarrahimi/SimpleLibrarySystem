@@ -33,3 +33,12 @@ def search_books(keyword):
         print(" Search results:")
         for i, book in enumerate(found, start=1):
             print(f"{i}. {book['title']} - {book['author']} ({book['year']})")
+
+
+def delete_book(index):
+    """Delete a book by its index"""
+    if 0 < index <= len(books):
+        removed = books.pop(index - 1)
+        print(f" Book '{removed['title']}' deleted successfully.")
+    else:
+        print(" Invalid book number.")
