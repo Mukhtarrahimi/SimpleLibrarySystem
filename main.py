@@ -49,3 +49,9 @@ add_book("Pride and Prejudice", "Jane Austen", 1813)
 add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
 
 show_books()
+
+
+search_books("Jane")  # search example
+delete_book(2)  # delete example
+
+show_books()
