@@ -15,7 +15,6 @@ def load_books():
         print(f"File '{FILE_NAME}' not found. Starting with empty library.")
         books = []
 
-
 def save_books():
     with open(FILE_NAME, "w", encoding="utf-8") as f:
         json.dump(books, f, ensure_ascii=False, indent=2)
@@ -31,7 +30,6 @@ def add_book():
         print(f" Book '{title}' added successfully.")
     else:
         print("All fields are required!")
-
 
 def show_books():
     if not books:
