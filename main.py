@@ -1,6 +1,28 @@
 import json
 
+# List of books
 books = []
+
+FILE_NAME = "books.json"
+
+
+def load_books():
+    """Load books from a JSON file"""
+    global books
+    try:
+        with open(FILE_NAME, "r", encoding="utf-8") as f:
+            books = json.load(f)
+        print(f" Loaded {len(books)} books from '{FILE_NAME}'.")
+    except FileNotFoundError:
+        print(f"File '{FILE_NAME}' not found. Starting with empty library.")
+        books = []
+
+
+def save_books():
+    """Save books to a JSON file"""
+    with open(FILE_NAME, "w", encoding="utf-8") as f:
+        json.dump(books, f, ensure_ascii=False, indent=2)
+    print(f" Saved {len(books)} books to '{FILE_NAME}'.")
 
 
 def add_book(title, author, year):
@@ -43,15 +65,18 @@ def delete_book(index):
     else:
         print(" Invalid book number.")
 
-# Test run
+
+
+# -----------------------------
+load_books()  
+
 add_book("One Hundred Years of Solitude", "Gabriel García Márquez", 1967)
 add_book("Pride and Prejudice", "Jane Austen", 1813)
 add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
 
 show_books()
-
-
-search_books("Jane")  # search example
-delete_book(2)  # delete example
-
+search_books("Jane")
+delete_book(2)
 show_books()
+
+save_books()  # Save books at the end
