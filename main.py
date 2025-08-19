@@ -66,17 +66,33 @@ def delete_book(index):
         print(" Invalid book number.")
 
 
-
 # -----------------------------
-load_books()  
+def main_menu():
+    load_books()
+    while True:
+        print("\n=== Simple Library System ===")
+        print("1. Add a book")
+        print("2. Show all books")
+        print("3. Search books")
+        print("4. Delete a book")
+        print("5. Save and exit")
+        choice = input("Choose an option (1-5): ").strip()
 
-add_book("One Hundred Years of Solitude", "Gabriel García Márquez", 1967)
-add_book("Pride and Prejudice", "Jane Austen", 1813)
-add_book("The Great Gatsby", "F. Scott Fitzgerald", 1925)
+        if choice == "1":
+            add_book()
+        elif choice == "2":
+            show_books()
+        elif choice == "3":
+            search_books()
+        elif choice == "4":
+            delete_book()
+        elif choice == "5":
+            save_books()
+            print(" Exiting program. Goodbye!")
+            break
+        else:
+            print(" Invalid choice. Please enter 1-5.")
 
-show_books()
-search_books("Jane")
-delete_book(2)
-show_books()
 
-save_books()  # Save books at the end
+if __name__ == "__main__":
+    main_menu()
