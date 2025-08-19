@@ -17,3 +17,19 @@ def show_books():
     else:
         for i, book in enumerate(books, start=1):
             print(f"{i}. {book['title']} - {book['author']} ({book['year']})")
+
+
+def search_books(keyword):
+    """Search books by title or author"""
+    found = [
+        book
+        for book in books
+        if keyword.lower() in book["title"].lower()
+        or keyword.lower() in book["author"].lower()
+    ]
+    if not found:
+        print(" No matching books found.")
+    else:
+        print(" Search results:")
+        for i, book in enumerate(found, start=1):
+            print(f"{i}. {book['title']} - {book['author']} ({book['year']})")
